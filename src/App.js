@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Grid from './Grid';
 
 function App() {
-	return <div class="grid" />;
+	return <Grid />;
 }
 
 export default App;

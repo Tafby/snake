@@ -1,4 +1,4 @@
-.tile {
+.snake {
 	background: url(./logo.svg) no-repeat center;
 	background-color: #588b8b;
 	overflow: hidden;
@@ -6,8 +6,8 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(10, 1fr);
-	grid-template-rows: repeat(20, 1fr);
+	grid-template-columns: repeat(30, 1fr);
+	grid-template-rows: repeat(30, 1fr);
 	background-color: #d8e2dc;
 	border: 1px solid #798478;
 	width: 100vh;
