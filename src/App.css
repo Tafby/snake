@@ -1,6 +1,5 @@
 .snake {
-	background: url(./logo.svg) no-repeat center;
-	background-color: #588b8b;
+	background-color: #2ef0f0;
 	overflow: hidden;
 }
 
