@@ -15,18 +15,7 @@ class Grid extends Component {
 
 		// this.intervalID = window.setInterval(this.moveRight, 500);
 	};
-	keySet = () => {
-		if (this.moveRight) {
-			// this.intervalID = window.setInterval(this.moveRight, 500);
-			this.setState({ setKey: 'ArrowRight' });
-		} else if (this.moveLeft) {
-			this.intervalID = window.setInterval(this.moveLeft, 500);
-		} else if (this.moveDown) {
-			this.intervalID = window.setInterval(this.moveDown, 500);
-		} else if (this.moveUp) {
-			this.intervalID = window.setInterval(this.moveUp, 500);
-		}
-	};
+
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
@@ -47,6 +36,7 @@ class Grid extends Component {
 		}
 	};
 	moveRight = () => {
+		this.setState({ setKey: 'ArrowRight' });
 		this.setState({ column: this.state.column + 1 });
 	};
 	moveLeft = () => {
