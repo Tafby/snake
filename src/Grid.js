@@ -7,14 +7,15 @@ class Grid extends Component {
 		this.state = {
 			row: 1,
 			column: 1,
-			setKey: null
+			setKey: 'ArrowRight'
 		};
 	}
 	componentDidMount = () => {
 		document.addEventListener('keydown', this.keyListener);
-
-		// this.intervalID = window.setInterval(this.moveRight, 500);
+		this.intervalID = setInterval(this.keyListener(), 500);
 	};
+
+	gameLoop = () => {};
 
 	keyListener = (event) => {
 		switch (event.key) {
@@ -38,15 +39,20 @@ class Grid extends Component {
 	moveRight = () => {
 		this.setState({ setKey: 'ArrowRight' });
 		this.setState({ column: this.state.column + 1 });
+		console.log(this.state.setKey);
 	};
 	moveLeft = () => {
+		this.setState({ setKey: 'ArrowLeft' });
 		this.setState({ column: this.state.column - 1 });
+		console.log(this.state.setKey);
 	};
 
 	moveDown = () => {
+		this.setState({ setKey: 'ArrowDown' });
 		this.setState({ row: this.state.row + 1 });
 	};
 	moveUp = () => {
+		this.setState({ setKey: 'ArrowUp' });
 		this.setState({ row: this.state.row - 1 });
 	};
 	render() {
