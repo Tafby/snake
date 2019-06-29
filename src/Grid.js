@@ -7,54 +7,43 @@ class Grid extends Component {
 		this.state = {
 			row: 1,
 			column: 1,
-			setKey: 'ArrowRight'
+			moveRow: 0,
+			moveColumn: 0
 		};
 	}
 	componentDidMount = () => {
 		document.addEventListener('keydown', this.keyListener);
-		this.intervalID = setInterval(this.keyListener(), 500);
+		this.intervalID = window.setInterval(this.gameLoop, 400);
 	};
 
-	gameLoop = () => {};
+	gameLoop = () => {
+		this.move();
+	};
+
+	move = () => {
+		this.setState({
+			row: this.state.row + this.state.moveRow,
+			column: this.state.column + this.state.moveColumn
+		});
+	};
 
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
-				this.moveLeft();
+				this.setState({ moveColumn: -1, moveRow: 0 });
 				break;
 			case 'ArrowRight':
-				this.moveRight();
+				this.setState({ moveColumn: 1, moveRow: 0 });
 				break;
 			case 'ArrowDown':
-				this.moveDown();
+				this.setState({ moveColumn: 0, moveRow: 1 });
 				break;
 			case 'ArrowUp':
-				this.moveUp();
-				break;
-			case 'p':
-				this.pause();
+				this.setState({ moveColumn: 0, moveRow: -1 });
 				break;
 		}
 	};
-	moveRight = () => {
-		this.setState({ setKey: 'ArrowRight' });
-		this.setState({ column: this.state.column + 1 });
-		console.log(this.state.setKey);
-	};
-	moveLeft = () => {
-		this.setState({ setKey: 'ArrowLeft' });
-		this.setState({ column: this.state.column - 1 });
-		console.log(this.state.setKey);
-	};
 
-	moveDown = () => {
-		this.setState({ setKey: 'ArrowDown' });
-		this.setState({ row: this.state.row + 1 });
-	};
-	moveUp = () => {
-		this.setState({ setKey: 'ArrowUp' });
-		this.setState({ row: this.state.row - 1 });
-	};
 	render() {
 		return (
 			<div className="grid">
