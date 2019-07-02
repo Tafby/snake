@@ -11,18 +11,21 @@ class Grid extends Component {
 			moveRow: 0,
 			moveColumn: 0,
 			randomRow: 5,
-			randomCol: 7
+			randomCol: 7,
+			spanTwo: 1
 		};
 	}
 	componentDidMount = () => {
 		document.addEventListener('keydown', this.keyListener);
-		this.intervalID = window.setInterval(this.gameLoop, 400);
+		this.intervalID = window.setInterval(this.gameLoop, 200);
 		this.randomFruits();
+
 		console.log(this.state.randomCol);
 		console.log(this.state.randomRow);
 	};
 
 	gameLoop = () => {
+		this.collisionCheck();
 		this.move();
 	};
 
@@ -38,6 +41,13 @@ class Grid extends Component {
 		let randomCol = Math.floor(Math.random() * 30) + 1;
 		this.setState({ randomRow: randomRow });
 		this.setState({ randomCol: randomCol });
+	};
+
+	collisionCheck = () => {
+		if (this.state.randomCol === this.state.column && this.state.randomRow === this.state.row) {
+			this.setState({ spanTwo: this.state.spanTwo + 1 });
+			this.randomFruits();
+		}
 	};
 
 	keyListener = (event) => {
@@ -60,7 +70,7 @@ class Grid extends Component {
 	render() {
 		return (
 			<div className="grid">
-				<Snake row={this.state.row} column={this.state.column} />
+				<Snake row={this.state.row} column={this.state.column} spanTwo={this.state.spanTwo} />
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>
 		);
