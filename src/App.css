@@ -2,6 +2,10 @@
 	background-color: #2ef0f0;
 	overflow: hidden;
 }
+.fruit {
+	background-color: #f02e2e;
+	overflow: hidden;
+}
 
 .grid {
 	display: grid;

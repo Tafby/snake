@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Snake from './Snake';
+import Fruit from './Fruit';
 
 class Grid extends Component {
 	constructor(props) {
@@ -8,12 +9,17 @@ class Grid extends Component {
 			row: 1,
 			column: 1,
 			moveRow: 0,
-			moveColumn: 0
+			moveColumn: 0,
+			randomRow: 5,
+			randomCol: 7
 		};
 	}
 	componentDidMount = () => {
 		document.addEventListener('keydown', this.keyListener);
 		this.intervalID = window.setInterval(this.gameLoop, 400);
+		this.randomFruits();
+		console.log(this.state.randomCol);
+		console.log(this.state.randomRow);
 	};
 
 	gameLoop = () => {
@@ -25,6 +31,13 @@ class Grid extends Component {
 			row: this.state.row + this.state.moveRow,
 			column: this.state.column + this.state.moveColumn
 		});
+	};
+
+	randomFruits = () => {
+		let randomRow = Math.floor(Math.random() * 30) + 1;
+		let randomCol = Math.floor(Math.random() * 30) + 1;
+		this.setState({ randomRow: randomRow });
+		this.setState({ randomCol: randomCol });
 	};
 
 	keyListener = (event) => {
@@ -48,6 +61,7 @@ class Grid extends Component {
 		return (
 			<div className="grid">
 				<Snake row={this.state.row} column={this.state.column} />
+				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>
 		);
 	}
