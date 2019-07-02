@@ -59,6 +59,10 @@ class Grid extends Component {
 		}
 	};
 
+	// if it's pointed down, grow the snake -1, if it's poinsted up grow snake row 1, if it's pointed left
+	// grow snake col 1, and if it's pointed right, grow snake -1
+	//possibly add segments for the snake instead of spans, so each square is a segment
+
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
