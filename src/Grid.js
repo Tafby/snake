@@ -51,7 +51,7 @@ class Grid extends Component {
 
 	collisionCheck = () => {
 		if (this.state.randomCol === this.state.column && this.state.randomRow === this.state.row) {
-			this.setState({ spanTwo: this.state.spanTwo + 1 });
+			snakeTotal += 1;
 			this.randomFruits();
 		}
 		if (this.state.row === -1 || this.state.row === 30 || this.state.column === 31 || this.state.column === -1) {

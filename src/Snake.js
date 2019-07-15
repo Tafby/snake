@@ -5,10 +5,10 @@ class Snake extends Component {
 	render() {
 		return (
 			<div>
-		for (let i = 0; i < array.length; i++) {
+		{for(let i = 0; i < array.length; i++) {
 			<SnakeSegment />
 				
-			}
+			}}
 		</div>
 		);
 	}
