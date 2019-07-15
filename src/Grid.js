@@ -12,7 +12,8 @@ class Grid extends Component {
 			moveColumn: 0,
 			randomRow: 5,
 			randomCol: 7,
-			spanTwo: 1
+			snaketotal: 0,
+			snakeTotalArray: []
 		};
 	}
 	componentDidMount = () => {
@@ -59,8 +60,6 @@ class Grid extends Component {
 		}
 	};
 
-
-
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
@@ -81,7 +80,8 @@ class Grid extends Component {
 	render() {
 		return (
 			<div className="grid">
-				<Snake row={this.state.row} column={this.state.column} spanTwo={this.state.spanTwo} />
+				<Snake row={this.state.row} column={this.state.column} />
+
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>
 		);

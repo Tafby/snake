@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import SnakeSegment from './SnakeSegment';
 
 class Snake extends Component {
 	render() {
 		return (
-			<span
-				className="snake"
-				style={{
-					gridArea: `${this.props.row} / ${this.props.column} / span 1 / span ${this.props.spanTwo}`
-				}}
-				// possibly add the added coord to an array, map through and print out
-			/>
+			<div>
+		for (let i = 0; i < array.length; i++) {
+			<SnakeSegment />
+				
+			}
+		</div>
 		);
 	}
 }
