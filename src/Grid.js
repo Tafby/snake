@@ -11,9 +11,7 @@ class Grid extends Component {
 			moveRow: 0,
 			moveColumn: 0,
 			randomRow: 5,
-			randomCol: 7,
-			snaketotal: 0,
-			snakeTotalArray: []
+			randomCol: 7
 		};
 	}
 	componentDidMount = () => {
@@ -30,13 +28,6 @@ class Grid extends Component {
 		this.move();
 	};
 
-	move = () => {
-		this.setState({
-			row: this.state.row + this.state.moveRow,
-			column: this.state.column + this.state.moveColumn
-		});
-	};
-
 	randomFruits = () => {
 		let randomRow = Math.floor(Math.random() * 30) + 1;
 		let randomCol = Math.floor(Math.random() * 30) + 1;
@@ -51,7 +42,7 @@ class Grid extends Component {
 
 	collisionCheck = () => {
 		if (this.state.randomCol === this.state.column && this.state.randomRow === this.state.row) {
-			snakeTotal += 1;
+			// snakeTotal += 1;
 			this.randomFruits();
 		}
 		if (this.state.row === -1 || this.state.row === 30 || this.state.column === 31 || this.state.column === -1) {

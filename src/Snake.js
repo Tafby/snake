@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import SnakeSegment from './SnakeSegment';
 
 class Snake extends Component {
+	move = () => {
+		this.setState({
+			row: this.state.row + this.state.moveRow,
+			column: this.state.column + this.state.moveColumn
+		});
+	};
 	render() {
 		return (
-			<div>
-		{for(let i = 0; i < array.length; i++) {
-			<SnakeSegment />
-				
-			}}
-		</div>
+			<span
+				className="snake"
+				style={{
+					gridArea: `${this.props.row} / ${this.props.column} / span 1 / span 1`
+				}}
+				// possibly add the added coord to an array, map through and print out
+			/>
 		);
 	}
 }
