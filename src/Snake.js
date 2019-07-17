@@ -5,7 +5,8 @@ class Snake extends Component {
 		super(props);
 		this.state = {
 			row: 1,
-			column: 1
+			column: 1,
+			snakeArray: [ 1, 1 ]
 		};
 	}
 
@@ -14,6 +15,17 @@ class Snake extends Component {
 			row: this.state.row + this.props.moveRow,
 			column: this.state.column + this.props.moveColumn
 		});
+	};
+
+	newMove = () => {
+		if ((this.state.snakeArray.length = 1)) {
+			this.setState({
+				row: this.state.row + this.props.moveRow,
+				column: this.state.column + this.props.moveColumn
+			});
+		} else if (this.state.snakeArray.length < 1) {
+			this.state.snakeArray.forEach((segment) => {});
+		}
 	};
 	render() {
 		return (
