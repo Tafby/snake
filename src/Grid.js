@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Snake from './Snake';
 import Fruit from './Fruit';
+import SnakeSegment from './SnakeSegment';
 
 class Grid extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			row: 1,
+			column: 1,
 			moveRow: 0,
 			moveColumn: 0,
 			randomRow: 5,
-			randomCol: 7
+			randomCol: 7,
+			segmentArray: [ [ 1, 1 ] ]
 		};
 	}
 	componentDidMount = () => {
@@ -20,6 +24,15 @@ class Grid extends Component {
 
 	gameLoop = () => {
 		this.collisionCheck();
+		this.move();
+	};
+
+	move = () => {
+		let currentSnakeHead = this.state.segmentArray[0];
+		let newSnakeHead = [ currentSnakeHead[0] + this.state.moveRow, currentSnakeHead[1] + this.state.moveColumn ];
+		this.setState({
+			segmentArray: [ newSnakeHead ].concat(this.state.segmentArray.slice(0, -1))
+		});
 	};
 
 	randomFruits = () => {
@@ -61,13 +74,14 @@ class Grid extends Component {
 		}
 	};
 
-	directionChange = () => {};
-
 	render() {
 		return (
 			<div className="grid">
-				<Snake moveRow={this.state.moveRow} moveCol={this.state.moveColumn} />
-
+				<Fragment>
+					{this.state.segmentArray.map((coord, index) => {
+						return <SnakeSegment row={coord[0]} column={coord[1]} key={index} />;
+					})}
+				</Fragment>
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>
 		);
