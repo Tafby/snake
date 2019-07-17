@@ -6,8 +6,6 @@ class Grid extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			row: 1,
-			column: 1,
 			moveRow: 0,
 			moveColumn: 0,
 			randomRow: 5,
@@ -25,7 +23,7 @@ class Grid extends Component {
 
 	gameLoop = () => {
 		this.collisionCheck();
-		this.move();
+		this.directionChange();
 	};
 
 	randomFruits = () => {
@@ -42,7 +40,6 @@ class Grid extends Component {
 
 	collisionCheck = () => {
 		if (this.state.randomCol === this.state.column && this.state.randomRow === this.state.row) {
-			// snakeTotal += 1;
 			this.randomFruits();
 		}
 		if (this.state.row === -1 || this.state.row === 30 || this.state.column === 31 || this.state.column === -1) {
@@ -68,10 +65,18 @@ class Grid extends Component {
 		}
 	};
 
+	directionChange = () => {};
+
 	render() {
 		return (
 			<div className="grid">
-				<Snake row={this.state.row} column={this.state.column} />
+				<Snake
+					row={this.state.row}
+					column={this.state.column}
+					moveRow={this.state.moveRow}
+					moveCol={this.state.moveColumn}
+					directionChange={this.directionChange}
+				/>
 
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>

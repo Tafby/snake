@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 
 class Snake extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			row: 1,
+			column: 1
+		};
+	}
+
 	move = () => {
 		this.setState({
-			row: this.state.row + this.state.moveRow,
-			column: this.state.column + this.state.moveColumn
+			row: this.state.row + this.props.moveRow,
+			column: this.state.column + this.props.moveColumn
 		});
 	};
 	render() {
