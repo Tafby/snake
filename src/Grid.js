@@ -16,14 +16,10 @@ class Grid extends Component {
 		document.addEventListener('keydown', this.keyListener);
 		this.intervalID = window.setInterval(this.gameLoop, 200);
 		this.randomFruits();
-
-		console.log(this.state.randomCol);
-		console.log(this.state.randomRow);
 	};
 
 	gameLoop = () => {
 		this.collisionCheck();
-		this.directionChange();
 	};
 
 	randomFruits = () => {
@@ -70,13 +66,7 @@ class Grid extends Component {
 	render() {
 		return (
 			<div className="grid">
-				<Snake
-					row={this.state.row}
-					column={this.state.column}
-					moveRow={this.state.moveRow}
-					moveCol={this.state.moveColumn}
-					directionChange={this.directionChange}
-				/>
+				<Snake moveRow={this.state.moveRow} moveCol={this.state.moveColumn} />
 
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
 			</div>
