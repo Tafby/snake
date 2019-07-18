@@ -48,9 +48,20 @@ class Grid extends Component {
 	};
 
 	collisionCheck = () => {
-		if (this.state.randomCol === this.state.column && this.state.randomRow === this.state.row) {
-			this.randomFruits();
-		}
+		this.state.segmentArray.forEach((currentItem) => {
+			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
+				let currentSnakeHead = this.state.segmentArray[0];
+				let newSnakeHead = [
+					currentSnakeHead[0] + this.state.moveRow,
+					currentSnakeHead[1] + this.state.moveColumn
+				];
+				this.setState({
+					segmentArray: [ newSnakeHead ].concat(this.state.segmentArray)
+				});
+				this.randomFruits();
+			}
+		});
+
 		if (this.state.row === -1 || this.state.row === 30 || this.state.column === 31 || this.state.column === -1) {
 			this.gameOver();
 			console.log('GAME OVER');
