@@ -18,7 +18,7 @@ class Grid extends Component {
 	}
 	componentDidMount = () => {
 		document.addEventListener('keydown', this.keyListener);
-		this.intervalID = window.setInterval(this.gameLoop, 200);
+		this.intervalID = window.setInterval(this.gameLoop, 100);
 		this.randomFruits();
 	};
 
@@ -45,27 +45,27 @@ class Grid extends Component {
 	gameOver = () => {
 		document.removeEventListener('keydown', this.keyListener);
 		clearInterval(this.intervalID);
+		console.log('GAME OVER');
 	};
 
 	collisionCheck = () => {
+		let currentSnakeHead = this.state.segmentArray[0];
+		let newSnakeHead = [ currentSnakeHead[0] + this.state.moveRow, currentSnakeHead[1] + this.state.moveColumn ];
 		this.state.segmentArray.forEach((currentItem) => {
 			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
-				let currentSnakeHead = this.state.segmentArray[0];
-				let newSnakeHead = [
-					currentSnakeHead[0] + this.state.moveRow,
-					currentSnakeHead[1] + this.state.moveColumn
-				];
 				this.setState({
 					segmentArray: [ newSnakeHead ].concat(this.state.segmentArray)
 				});
 				this.randomFruits();
+			} else if (
+				currentItem[0] === -1 ||
+				currentItem[0] === 30 ||
+				currentItem[1] === 31 ||
+				currentItem[1] === -1
+			) {
+				this.gameOver();
 			}
 		});
-
-		if (this.state.row === -1 || this.state.row === 30 || this.state.column === 31 || this.state.column === -1) {
-			this.gameOver();
-			console.log('GAME OVER');
-		}
 	};
 
 	keyListener = (event) => {
