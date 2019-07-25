@@ -64,6 +64,8 @@ class Grid extends Component {
 				currentItem[1] === -1
 			) {
 				this.gameOver();
+			} else if (newSnakeHead === currentItem[0] || newSnakeHead === currentItem[1]) {
+				this.gameOver();
 			}
 		});
 	};
