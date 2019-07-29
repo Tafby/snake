@@ -68,6 +68,16 @@ class Grid extends Component {
 		});
 	};
 
+	bodyCheck = () => {
+		this.state.segmentArray.forEach((currentItem) => {
+			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
+				this.setState({
+					segmentArray: [newSnakeHead].concat(this.state.segmentArray)
+				});
+			}
+		})
+	
+
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
