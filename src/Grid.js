@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Snake from './Snake';
 import Fruit from './Fruit';
 import SnakeSegment from './SnakeSegment';
+import ScoreBoard from './ScoreBoard';
 
 class Grid extends Component {
 	constructor(props) {
@@ -14,7 +15,8 @@ class Grid extends Component {
 			randomRow: 5,
 			randomCol: 7,
 			segmentArray: [ [ 1, 1 ] ],
-			previousKeyStroke: ''
+			previousKeyStroke: '',
+			score: 0
 		};
 	}
 	componentDidMount = () => {
@@ -48,6 +50,9 @@ class Grid extends Component {
 		clearInterval(this.intervalID);
 		console.log('GAME OVER');
 	};
+	scored = () => {
+		this.setState({ score: (this.state.score += 1) });
+	};
 
 	collisionCheck = () => {
 		let currentSnakeHead = this.state.segmentArray[0];
@@ -60,6 +65,7 @@ class Grid extends Component {
 					segmentArray: [ newSnakeHead ].concat(this.state.segmentArray)
 				});
 				this.randomFruits();
+				this.scored();
 			} else if (
 				currentItem[0] === -1 ||
 				currentItem[0] === 30 ||
@@ -121,6 +127,7 @@ class Grid extends Component {
 					})}
 				</Fragment>
 				<Fruit randomRow={this.state.randomRow} randomCol={this.state.randomCol} />
+				<ScoreBoard score={this.state.score} />
 			</div>
 		);
 	}

@@ -27,3 +27,7 @@
 .cell {
 	display: inline-block;
 }
+.scoreboard {
+	position: absolute;
+	left: 100px;
+}
