@@ -13,7 +13,8 @@ class Grid extends Component {
 			moveColumn: 0,
 			randomRow: 5,
 			randomCol: 7,
-			segmentArray: [ [ 1, 1 ] ]
+			segmentArray: [ [ 1, 1 ] ],
+			previousKeyStroke: ''
 		};
 	}
 	componentDidMount = () => {
@@ -69,8 +70,8 @@ class Grid extends Component {
 				this.gameOver();
 			} else if (
 				this.state.segmentArray.length > 1 &&
-				currentItem[0] === currentSnakeHead[0] &&
-				currentItem[1] === currentSnakeHead[1]
+				currentItem[0] === newSnakeHead[0] &&
+				currentItem[1] === newSnakeHead[1]
 			) {
 				this.gameOver();
 			}
@@ -80,16 +81,28 @@ class Grid extends Component {
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
-				this.setState({ moveColumn: -1, moveRow: 0 });
+				this.setState({ moveColumn: -1, moveRow: 0, previousKeyStroke: 'ArrowLeft' });
+				if (this.state.previousKeyStroke === 'ArrowRight') {
+					break;
+				}
 				break;
 			case 'ArrowRight':
-				this.setState({ moveColumn: 1, moveRow: 0 });
+				this.setState({ moveColumn: 1, moveRow: 0, previousKeyStroke: 'ArrowRight' });
+				if (this.state.previousKeyStroke === 'ArrowLeft') {
+					break;
+				}
 				break;
 			case 'ArrowDown':
-				this.setState({ moveColumn: 0, moveRow: 1 });
+				this.setState({ moveColumn: 0, moveRow: 1, previousKeyStroke: 'ArrowDown' });
+				if (this.state.previousKeyStroke === 'ArrowUp') {
+					break;
+				}
 				break;
 			case 'ArrowUp':
-				this.setState({ moveColumn: 0, moveRow: -1 });
+				this.setState({ moveColumn: 0, moveRow: -1, previousKeyStroke: 'ArrowUp' });
+				if (this.state.previousKeyStroke === 'ArrowDown') {
+					break;
+				}
 				break;
 		}
 	};
