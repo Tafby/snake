@@ -50,8 +50,11 @@ class Grid extends Component {
 
 	collisionCheck = () => {
 		let currentSnakeHead = this.state.segmentArray[0];
+		console.log('Current Snake Head', currentSnakeHead);
 		let newSnakeHead = [ currentSnakeHead[0] + this.state.moveRow, currentSnakeHead[1] + this.state.moveColumn ];
+		console.log('NewSnakeHead', newSnakeHead);
 		this.state.segmentArray.forEach((currentItem) => {
+			console.log('CurrentItem', currentItem);
 			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
 				this.setState({
 					segmentArray: [ newSnakeHead ].concat(this.state.segmentArray)
@@ -61,22 +64,13 @@ class Grid extends Component {
 				currentItem[0] === -1 ||
 				currentItem[0] === 30 ||
 				currentItem[1] === 31 ||
-				currentItem[1] === -1
+				currentItem[1] === -1 ||
+				(currentItem[0] === currentSnakeHead[0] && currentItem[1] === currentSnakeHead[1])
 			) {
 				this.gameOver();
 			}
 		});
 	};
-
-	bodyCheck = () => {
-		this.state.segmentArray.forEach((currentItem) => {
-			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
-				this.setState({
-					segmentArray: [newSnakeHead].concat(this.state.segmentArray)
-				});
-			}
-		})
-	
 
 	keyListener = (event) => {
 		switch (event.key) {
