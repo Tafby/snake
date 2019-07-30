@@ -64,8 +64,13 @@ class Grid extends Component {
 				currentItem[0] === -1 ||
 				currentItem[0] === 30 ||
 				currentItem[1] === 31 ||
-				currentItem[1] === -1 ||
-				(currentItem[0] === currentSnakeHead[0] && currentItem[1] === currentSnakeHead[1])
+				currentItem[1] === -1
+			) {
+				this.gameOver();
+			} else if (
+				this.state.segmentArray.length > 1 &&
+				currentItem[0] === currentSnakeHead[0] &&
+				currentItem[1] === currentSnakeHead[1]
 			) {
 				this.gameOver();
 			}
