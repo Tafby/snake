@@ -1,6 +1,7 @@
 .snake {
 	background-color: #2ef02e;
 	overflow: hidden;
+	border-radius: 50%;
 }
 .fruit {
 	background-color: #f02e2e;
@@ -11,7 +12,7 @@
 	display: grid;
 	grid-template-columns: repeat(30, 1fr);
 	grid-template-rows: repeat(30, 1fr);
-	background-color: #d8e2dc;
+	background-color: #f3f9f6;
 	border: 1px solid #798478;
 	width: 100vh;
 	height: 95vh;
@@ -30,4 +31,7 @@
 .scoreboard {
 	position: absolute;
 	left: 100px;
+	border: 1px solid black;
+	width: 200px;
+	height: 300px;
 }
