@@ -51,11 +51,10 @@ class Grid extends Component {
 
 	collisionCheck = () => {
 		let currentSnakeHead = this.state.segmentArray[0];
-		console.log('Current Snake Head', currentSnakeHead);
+
 		let newSnakeHead = [ currentSnakeHead[0] + this.state.moveRow, currentSnakeHead[1] + this.state.moveColumn ];
-		console.log('NewSnakeHead', newSnakeHead);
+
 		this.state.segmentArray.forEach((currentItem) => {
-			console.log('CurrentItem', currentItem);
 			if (this.state.randomRow === currentItem[0] && this.state.randomCol === currentItem[1]) {
 				this.setState({
 					segmentArray: [ newSnakeHead ].concat(this.state.segmentArray)
@@ -81,28 +80,34 @@ class Grid extends Component {
 	keyListener = (event) => {
 		switch (event.key) {
 			case 'ArrowLeft':
-				this.setState({ moveColumn: -1, moveRow: 0, previousKeyStroke: 'ArrowLeft' });
 				if (this.state.previousKeyStroke === 'ArrowRight') {
 					break;
 				}
+				this.setState({ moveColumn: -1, moveRow: 0, previousKeyStroke: 'ArrowLeft' });
+				console.log(this.state.previousKeyStroke);
+
 				break;
 			case 'ArrowRight':
-				this.setState({ moveColumn: 1, moveRow: 0, previousKeyStroke: 'ArrowRight' });
 				if (this.state.previousKeyStroke === 'ArrowLeft') {
 					break;
 				}
+				this.setState({ moveColumn: 1, moveRow: 0, previousKeyStroke: 'ArrowRight' });
+				console.log(this.state.previousKeyStroke);
 				break;
 			case 'ArrowDown':
-				this.setState({ moveColumn: 0, moveRow: 1, previousKeyStroke: 'ArrowDown' });
 				if (this.state.previousKeyStroke === 'ArrowUp') {
 					break;
 				}
+				this.setState({ moveColumn: 0, moveRow: 1, previousKeyStroke: 'ArrowDown' });
+				console.log(this.state.previousKeyStroke);
 				break;
 			case 'ArrowUp':
-				this.setState({ moveColumn: 0, moveRow: -1, previousKeyStroke: 'ArrowUp' });
 				if (this.state.previousKeyStroke === 'ArrowDown') {
 					break;
 				}
+				this.setState({ moveColumn: 0, moveRow: -1, previousKeyStroke: 'ArrowUp' });
+				console.log(this.state.previousKeyStroke);
+
 				break;
 		}
 	};
