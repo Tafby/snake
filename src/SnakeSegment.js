@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 export default class SnakeSegment extends Component {
 	render() {
+		let segmentTypeClassName = this.props.head ? 'snake-head' : 'snake-body';
+		let orientationClassName = `orientation-${this.props.orientation}`;
+
 		return (
 			<span
-				className="snake"
+				className={`${segmentTypeClassName} ${orientationClassName}`}
 				style={{
 					gridArea: `${this.props.row} / ${this.props.column} / span 1 / span 1`
 				}}
-				// possibly add the added coord to an array, map through and print out
 			/>
 		);
 	}
