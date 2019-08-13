@@ -9,7 +9,7 @@ This project was built using React.
 
 To run it on your machine:
 
-clone the project
-cd into the project
-npm install
+clone the project,
+cd into the project,
+npm install,
 npm start
