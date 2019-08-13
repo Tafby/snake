@@ -1,14 +1,14 @@
 .snake-head {
-	/* background-color: #2ef02e; */
-	background-size: contain;
-	background-image: url(./images/head.png);
+	background-color: #2ef02e;
+	/* background-size: contain; */
+	/* background-image: url(./images/head.png); */
 }
 
 .snake-body {
-	/* background-color: #2ef02e; */
-	background-size: contain;
+	background-color: #2ef02e;
+	/* background-size: contain;
 	background-image: url(./images/body.png);
-	background-color: rgb(58, 180, 49);
+	background-color: rgb(58, 180, 49); */
 }
 
 .orientation-up {
@@ -37,7 +37,9 @@
 	position: fixed;
 	grid-template-columns: repeat(30, 1fr);
 	grid-template-rows: repeat(30, 1fr);
-	background-color: #f3f9f6;
+	grid-gap: 2px;
+
+	background-color: white;
 	border: 1px solid #798478;
 	width: 95vh;
 	height: 95vh;
@@ -50,10 +52,6 @@
 	align-items: center;
 }
 
-.cell {
-	display: inline-block;
-	border: 1px solid black;
-}
 .scoreboard {
 	position: absolute;
 	left: 100%;

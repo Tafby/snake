@@ -41,7 +41,7 @@ class Grid extends Component {
 		];
 
 		// Boundary check
-		if (newSnakeHead[0] <= -1 || newSnakeHead[0] >= 31 || newSnakeHead[1] <= -1 || newSnakeHead[1] >= 31) {
+		if (newSnakeHead[0] <= 0 || newSnakeHead[0] >= 31 || newSnakeHead[1] <= 0 || newSnakeHead[1] >= 31) {
 			this.gameOver();
 			return;
 		}
