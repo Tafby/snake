@@ -9,14 +9,12 @@ class Grid extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			row: 1,
-			column: 1,
 			moveRow: 0,
 			moveColumn: 0,
 			fruitCoords: [ 1, 1 ],
-			segmentArray: [ [ 1, 1, 'right' ] ],
-			nextDirection: 'right',
-			direction: 'right',
+			segmentArray: [ [ 15, 15, 'right' ] ],
+			nextDirection: null,
+			direction: null,
 			score: 0,
 			isGameOver: false
 		};
@@ -115,23 +113,26 @@ class Grid extends Component {
 
 	render() {
 		return (
-			<div className="grid">
-				<Fragment>
-					{this.state.segmentArray.map((coord, index) => {
-						return (
-							<SnakeSegment
-								row={coord[0]}
-								column={coord[1]}
-								head={index === 0}
-								orientation={coord[2]}
-								key={index}
-							/>
-						);
-					})}
-				</Fragment>
-				<Fruit row={this.state.fruitCoords[0]} col={this.state.fruitCoords[1]} />
+			<div>
 				{this.state.isGameOver ? <EndGameBox score={this.state.score} /> : null}
-				<ScoreBoard score={this.state.score} />
+				<div className="grid">
+					<Fragment>
+						{this.state.segmentArray.map((coord, index) => {
+							return (
+								<SnakeSegment
+									row={coord[0]}
+									column={coord[1]}
+									head={index === 0}
+									orientation={coord[2]}
+									key={index}
+								/>
+							);
+						})}
+					</Fragment>
+					<Fruit row={this.state.fruitCoords[0]} col={this.state.fruitCoords[1]} />
+
+					<ScoreBoard score={this.state.score} />
+				</div>
 			</div>
 		);
 	}
