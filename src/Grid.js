@@ -29,6 +29,10 @@ class Grid extends Component {
 		this.setState({ direction: this.state.nextDirection }, this.move);
 	};
 
+	replay = () => {
+		window.location.reload();
+	};
+
 	move = () => {
 		let currentSnakeHead = this.state.segmentArray[0];
 
@@ -114,7 +118,7 @@ class Grid extends Component {
 	render() {
 		return (
 			<div>
-				{this.state.isGameOver ? <EndGameBox score={this.state.score} /> : null}
+				{this.state.isGameOver ? <EndGameBox replay={this.replay} score={this.state.score} /> : null}
 				<div className="grid">
 					<Fragment>
 						{this.state.segmentArray.map((coord, index) => {
